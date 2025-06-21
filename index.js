@@ -5,11 +5,13 @@ import userRouter from './routes/userRouter.js';
 import productRouter from './routes/productRouter.js';
 import verifyJwt from './middleware/auth.js';
 import orderRouter from './routes/orderRouter.js';
+import dotenv from 'dotenv';
+dotenv.config();
 
 //database connection
 const app = express();
 
-mongoose.connect("mongodb+srv://admin:1234@ccb.lmnja.mongodb.net/?retryWrites=true&w=majority&appName=CCB").then(
+mongoose.connect(process.env.MONGODB_URL).then(
     () => {
         console.log("Connected to the database");
     }
